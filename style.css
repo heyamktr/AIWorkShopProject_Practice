@@ -1,0 +1,124 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    height: 100vh;
+    background: linear-gradient(to bottom right, #f0fff4, #d0f0c0);
+    color: #1b5e20;
+  }
+body2{
+  margin: 0;
+}
+  /* Sidebar */
+  .sidebar {
+    width: 280px;
+    background: #2e7d32;
+    color: white;
+    padding: 25px 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    box-shadow: 4px 0 10px rgba(0,0,0,0.1);
+  }
+
+  .sidebar h2 {
+    margin-top: 0;
+    font-size: 24px;
+    border-bottom: 2px solid rgba(255,255,255,0.3);
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+  }
+
+  .tea-item {
+    margin: 10px 0;
+    padding: 12px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 12px;
+    transition: transform 0.2s, background 0.2s;
+    cursor: default;
+  }
+
+  .tea-item:hover {
+    background: rgba(255,255,255,0.2);
+    transform: translateX(5px);
+  }
+
+  .tea-item strong {
+    font-size: 16px;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .note {
+    font-size: 13px;
+    opacity: 0.8;
+  }
+
+  /* Main content */
+  .main {
+    flex: 1;
+    padding: 60px 80px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  h1 {
+    font-size: 36px;
+    margin-top: 0;
+    font-weight: 600;
+    color: #1b5e20;
+    margin-bottom: 12px;
+  }
+
+  p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: #2e7d32;
+  }
+
+  #question {
+    font-size: 22px;
+    margin: 25px 0;
+    min-height: 50px;
+    font-weight: 500;
+  }
+
+  .buttons {
+    margin-bottom: 40px;
+  }
+
+  button {
+    padding: 14px 28px;
+    margin-right: 14px;
+    border-radius: 14px;
+    border: none;
+    background: #43a047;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+
+  button:hover:not(:disabled) {
+    background: #2e7d32;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+  }
+
+  button:disabled {
+    background: #a5d6a7;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.05);
+  }
+
+  /* Result text (no box) */
+  #result {
+    font-size: 22px;
+    color: #1b5e20;
+    font-weight: 600;
+    min-height: 50px;
+  }

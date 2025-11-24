@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Find Your Favorite Tea</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Sidebar menu -->
+  <div class="sidebar">
+    <h2>Tea Menu</h2>
+    <div class="tea-item"><strong>Matcha Latte</strong><div class="note">Green tea, strong, with milk</div></div>
+    <div class="tea-item"><strong>Traditional Green Tea</strong><div class="note">Green tea, strong, without milk</div></div>
+    <div class="tea-item"><strong>English Breakfast Latte</strong><div class="note">Black tea, strong, with milk</div></div>
+    <div class="tea-item"><strong>Assam Black Tea</strong><div class="note">Black tea, strong, without milk</div></div>
+    <div class="tea-item"><strong>Rooibos Latte</strong><div class="note">Herbal tea, strong, with milk</div></div>
+    <div class="tea-item"><strong>Peppermint Tea</strong><div class="note">Herbal tea, strong, without milk</div></div>
+    <div class="tea-item"><strong>Chai Latte</strong><div class="note">Flavored tea, strong, with milk</div></div>
+    <div class="tea-item"><strong>Ginger Tea</strong><div class="note">Flavored tea, strong, without milk</div></div>
+    <div class="tea-item"><strong>Hojicha Latte</strong><div class="note">Green tea, light, with milk</div></div>
+    <div class="tea-item"><strong>Sencha</strong><div class="note">Green tea, light, without milk</div></div>
+    <div class="tea-item"><strong>Thai Tea</strong><div class="note">Black tea, light, with milk</div></div>
+    <div class="tea-item"><strong>Earl Grey</strong><div class="note">Black tea, light, without milk</div></div>
+    <div class="tea-item"><strong>Chamomile Latte</strong><div class="note">Herbal tea, light, with milk</div></div>
+    <div class="tea-item"><strong>Chamomile</strong><div class="note">Herbal tea, light, without milk</div></div>
+    <div class="tea-item"><strong>Jasmine Tea Latte</strong><div class="note">Flavored tea, light, with milk</div></div>
+    <div class="tea-item"><strong>Jasmine Tea</strong><div class="note">Flavored tea, light, without milk</div></div>
+  </div>
+
+  <!-- Main panel -->
+  <div class="main">
+    <h1>Find Your Tea</h1>
+    <p>This platform helps you decide which tea you might like best.</p>
+
+    <div id="question"></div>
+
+    <div class="buttons">
+      <button id="yes">Yes</button>
+      <button id="no">No</button>
+      <button id="restart">Restart</button>
+    </div>
+
+    <div id="result"></div>
+
+    <img id="tea-image" style="max-width: 250px; margin-top: 20px; display:none; border-radius: 12px;">
+  </div>
+
+  <script>
+
+    const root = {
+      question: "strong",
+      yes: {
+        question: "green-tea",
+        yes: { 
+          question: "with-milk",
+          yes: { 
+            guess: "Matcha Latte", 
+            image: "images/matcha_latte.jpg",
+            description: `<strong>Origin:</strong> Japan  <br>
+    <strong>Ingredients:</strong> Matcha powder, milk, water. <br>
+    <strong>How to Make:</strong> Whisk matcha until frothy, combine with steamed milk. <br>
+    <strong>Fun Fact:</strong> Samurai monks drank matcha for calm, focused energy!`
+          },
+          no: { 
+            guess: "Traditional Green Tea", 
+            image: "images/green_tea.jpg",
+            description: `<strong>Origin:</strong> China  <br>
+    <strong>Ingredients:</strong> Green tea leaves and hot water. <br>
+    <strong>How to Make:</strong> Steep at 75–80°C for 1–2 minutes. <br>
+    <strong>Fun Fact:</strong> One of the world’s oldest drinks—over 4,000 years old!`
+          }
+        },
+        no: { 
+          question: "black-tea",
+          yes: { 
+            question: "with-milk",
+            yes: { 
+              guess: "English Breakfast Latte", 
+              image: "images/english_breakfast_latte.jpg",
+              description: `<strong>Origin:</strong> United Kingdom  <br>
+    <strong>Ingredients:</strong> English breakfast tea, milk. <br>
+    <strong>How to Make:</strong> Brew strong tea, mix with steamed milk. <br>
+    <strong>Fun Fact:</strong> Queen Victoria helped popularize this tea blend!`
+            },
+            no: { 
+              guess: "Assam Black Tea", 
+              image: "images/assam_black.jpg",
+              description: `<strong>Origin:</strong> Assam, India  <br>
+    <strong>Ingredients:</strong> Assam black tea leaves. <br>
+    <strong>How to Make:</strong> Steep at 95°C for 3–5 minutes. <br>
+    <strong>Fun Fact:</strong> Assam is the only place where tea grows naturally at sea level!`
+            }
+          },
+          no: { 
+            question: "herbal-tea",
+            yes: { 
+              question: "with-milk",
+              yes: { 
+                guess: "Rooibos Latte", 
+                image: "images/rooibos_latte.jpg",
+                description: `<strong>Origin:</strong> South Africa  <br>
+    <strong>Ingredients:</strong> Rooibos leaves, milk. <br>
+    <strong>How to Make:</strong> Brew rooibos strongly, add steamed milk. <br>
+    <strong>Fun Fact:</strong> Naturally caffeine-free and rich in minerals!`
+              },
+              no: { 
+                guess: "Peppermint Tea", 
+                image: "images/peppermint.jpg",
+                description: `<strong>Origin:</strong> Mediterranean region 🌿 <br>
+    <strong>Ingredients:</strong> Peppermint leaves. <br>
+    <strong>How to Make:</strong> Steep 5–7 minutes. <br>
+    <strong>Fun Fact:</strong> Naturally freshens breath!`
+              }
+            },
+            no: { 
+              question: "flavored-tea",
+              yes: { 
+                question: "with-milk",
+                yes: { 
+                  guess: "Chai Latte", 
+                  image: "images/chai_latte.jpg",
+                  description: `<strong>Origin:</strong> India  <br>
+    <strong>Ingredients:</strong> Black tea, milk, cinnamon, ginger, cloves, cardamom. <br>
+    <strong>How to Make:</strong> Simmer spices with tea, add milk. <br>
+    <strong>Fun Fact:</strong> “Chai” means “tea,” so “chai tea” = “tea tea.”`
+                },
+                no: { 
+                  guess: "Ginger Tea", 
+                  image: "images/ginger_tea.jpg",
+                  description: `<strong>Origin:</strong> Southeast Asia 🌏 <br>
+    <strong>Ingredients:</strong> Ginger, water, honey. <br>
+    <strong>How to Make:</strong> Boil ginger slices for 10 minutes. <br>
+    <strong>Fun Fact:</strong> Used for 5,000+ years!`
+                }
+              }
+            }
+          }
+        }
+      },
+      
+      no: {
+        question: "green-tea",
+        yes: { 
+          question: "with-milk",
+          yes: { 
+            guess: "Hojicha Latte", 
+            image: "images/hojicha_latte.jpg",
+            description: `<strong>Origin:</strong> Japan  <br>
+    <strong>Ingredients:</strong> Roasted green tea, milk. <br>
+    <strong>How to Make:</strong> Brew hojicha, add milk. <br>
+    <strong>Fun Fact:</strong> Very low caffeine.`
+          },
+          no: { 
+            guess: "Sencha", 
+            image: "images/sencha.jpg",
+            description: `<strong>Origin:</strong> Japan  <br>
+    <strong>Ingredients:</strong> Steamed green tea leaves. <br>
+    <strong>How to Make:</strong> Steep at 70–75°C. <br>
+    <strong>Fun Fact:</strong> Japan’s most popular tea.`
+          }
+        },
+        no: { 
+          question: "black-tea",
+          yes: { 
+            question: "with-milk",
+            yes: { 
+              guess: "Thai Tea", 
+              image: "images/thai_tea.jpg",
+              description: `<strong>Origin:</strong> Thailand  <br>
+    <strong>Ingredients:</strong> Black tea, condensed milk, spices. <br>
+    <strong>How to Make:</strong> Brew tea with spices, add milk.`
+            },
+            no: { 
+              guess: "Earl Grey", 
+              image: "images/earl_grey.jpg",
+              description: `<strong>Origin:</strong> UK  <br>
+    <strong>Ingredients:</strong> Black tea with bergamot oil. <br>
+    <strong>Fun Fact:</strong> Named after Prime Minister Charles Grey.`
+            }
+          },
+          no: { 
+            question: "herbal-tea",
+            yes: { 
+              question: "with-milk",
+              yes: { 
+                guess: "Chamomile Latte", 
+                image: "images/chamomile_latte.jpg",
+                description: `<strong>Origin:</strong> Egypt  <br>
+    <strong>How to Make:</strong> Brew chamomile + steamed milk.`
+              },
+              no: { 
+                guess: "Chamomile", 
+                image: "images/chamomile.jpg",
+                description: `<strong>Origin:</strong> Egypt & Europe 🌼 <br>
+    <strong>Fun Fact:</strong> Known as the sleepy tea.`
+              }
+            },
+            no: { 
+              question: "flavored-tea",
+              yes: { 
+                question: "with-milk",
+                yes: { 
+                  guess: "Jasmine Tea Latte", 
+                  image: "images/jasmine_latte.jpg",
+                  description: `<strong>Origin:</strong> China  <br>
+    <strong>Ingredients:</strong> Jasmine tea + milk.`
+                },
+                no: { 
+                  guess: "Jasmine Tea", 
+                  image: "images/jasmine_tea.jpg",
+                  description: `<strong>Origin:</strong> China  <br>
+    <strong>Fun Fact:</strong> Scented with fresh jasmine flowers.`
+                }
+              }
+            }
+          }
+        }
+      }
+    };
+
+
+    const questions = {
+      "strong": "Do you like strong flavor?",
+      "green-tea": "Do you like green tea?",
+      "black-tea": "Do you like black tea?",
+      "herbal-tea": "Do you like herbal tea?",
+      "flavored-tea": "Do you like flavored tea?",
+      "with-milk": "Do you like it with milk?"
+    };
+
+    let currentNode = root;
+    // TODO: Create a "questions" object that maps question keys to question text
+    const questions = {
+      // TODO: Add question–text pairs
+    };
+
+    // TODO: Set the starting node of the decision tree
+    let currentNode = root;
+
+    // TODO: Get references to the HTML elements (question div, result div, buttons, image)
+    const questionDiv = /* TODO */;
+    const resultDiv = /* TODO */;
+    const yesButton = /* TODO */;
+    const noButton = /* TODO */;
+    const restartButton = /* TODO */;
+    const img = /* TODO */;
+
+    // TODO: Write the askQuestion() function
+    // - If the node has a guess: show result, description, image, disable buttons
+    // - Otherwise: show next question, enable buttons
+    function askQuestion() {
+      // TODO
+    }
+
+    // TODO: Add YES button click handler
+    // - Move to currentNode.yes
+    // - Call askQuestion()
+    yesButton.onclick = () => {
+      // TODO
+    };
+
+    // TODO: Add NO button click handler
+    // - Move to currentNode.no
+    // - Call askQuestion()
+    noButton.onclick = () => {
+      // TODO
+    };
+
+    // TODO: Add Restart button handler
+    // - Reset currentNode to root
+    // - Call askQuestion()
+    restartButton.onclick = () => {
+      // TODO
+    };
+
+    // TODO: Call askQuestion() once when the program loads
+    askQuestion();
+
+  </script>
+
+</body>
+</html>
